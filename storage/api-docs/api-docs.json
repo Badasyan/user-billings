@@ -1,0 +1,327 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your API Title",
+        "description": "API documentation using Swagger",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Local dev server"
+        }
+    ],
+    "paths": {
+        "/change-balance/{user_id}": {
+            "post": {
+                "tags": [
+                    "Баланс"
+                ],
+                "summary": "Изменение баланса пользователя",
+                "operationId": "4ed1bf74147ededfe709accaad7abfd3",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "amount": {
+                                        "type": "integer",
+                                        "example": 2400
+                                    },
+                                    "currency": {
+                                        "type": "string",
+                                        "example": "USD"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Баланс успешно изменён"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/log/{user_id}": {
+            "get": {
+                "tags": [
+                    "Логи"
+                ],
+                "summary": "Получение логов пользователя",
+                "operationId": "dd9d4dc08c1f11d5bc12892211aed387",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 24
+                                            },
+                                            "currency": {
+                                                "type": "string",
+                                                "example": "USD"
+                                            },
+                                            "amount": {
+                                                "type": "string",
+                                                "example": "12000"
+                                            },
+                                            "status": {
+                                                "type": "string",
+                                                "example": "increase"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users": {
+            "post": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "Создание нового пользователя",
+                "operationId": "d6e9fe6119820a324a5695b83f866841",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "age",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Arman"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": 20
+                                    },
+                                    "phone": {
+                                        "type": "string",
+                                        "example": "97255"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "an225555551@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Arman"
+                                        },
+                                        "age": {
+                                            "type": "integer",
+                                            "example": 20
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "97255"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "an225555551@gmail.com"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJ0eXAiOiJKV1..."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "Получение списка пользователей",
+                "operationId": "fabe0433f8644cde7ae406be38fec03b",
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "example": "Arman"
+                                            },
+                                            "age": {
+                                                "type": "integer",
+                                                "example": 20
+                                            },
+                                            "phone": {
+                                                "type": "string",
+                                                "example": "97255"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "arman@gmail.com"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/{id}": {
+            "get": {
+                "tags": [
+                    "Пользователи"
+                ],
+                "summary": "Получение информации о пользователе по ID",
+                "operationId": "adc791e4458283e3b03f541850c5e795",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 23
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Arman"
+                                        },
+                                        "age": {
+                                            "type": "integer",
+                                            "example": 20
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "97255"
+                                        },
+                                        "balance": {
+                                            "type": "object",
+                                            "example": {
+                                                "id": 2,
+                                                "amount": 2400,
+                                                "currency_value": "USD"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Баланс",
+            "description": "Баланс"
+        },
+        {
+            "name": "Логи",
+            "description": "Логи"
+        },
+        {
+            "name": "Пользователи",
+            "description": "Пользователи"
+        }
+    ]
+}
